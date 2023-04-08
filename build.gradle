@@ -1,6 +1,3 @@
-import com.axelor.gradle.tasks.GenerateAosChangelog
-import com.axelor.gradle.tasks.CheckEOLCharsInCsv
-
 buildscript {
   ext.repos = {
     mavenCentral() {
@@ -83,27 +80,6 @@ task archiveReports(type: Zip) {
   classifier 'reports'
   includeEmptyDirs = false
   destinationDirectory = file("$buildDir/libs")
-}
-
-
-task generateChangeLog(type: GenerateAosChangelog) {
-  group "Axelor application"
-  description "Generate change logs from unreleased entries."
-  files = fileTree(projectDir) {
-    include '**/changelogs/**/*.yml'
-    include '**/changelogs/**/*.yaml'
-  }
-}
-
-task checkCsvEOL(type: CheckEOLCharsInCsv) {
-  group "Axelor application"
-  description "Generate change logs from unreleased entries."
-  files = fileTree(projectDir) {
-    exclude '**/build'
-    exclude '**/bin'
-    exclude '**/out'
-    include '**/*.csv'
-  }
 }
 
 build.finalizedBy archiveReports

@@ -17,6 +17,7 @@ buildscript {
     maven { url 'https://repository.axelor.com/nexus/public/' }
   }
   ext.openPlatformVersion = '5.4.19'
+  ext.openSuiteVersion = '6.5.4'
   ext.appVersion = '6.5.4'
   repositories repos
   dependencies {
@@ -59,9 +60,7 @@ axelor {
 }
 
 dependencies {
-  gradle.appModules.each { dir ->
-    implementation project(":modules:$dir.name")
-  }
+  compile"com.axelor.apps:axelor-base:${openSuiteVersion}"
 }
 
 task("dataImport", type: JavaExec) {

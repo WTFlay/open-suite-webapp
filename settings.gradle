@@ -1,1 +1,22 @@
 rootProject.name = "axelor-erp"
+
+def modules = [
+        "account",
+        "bank-payment",
+        "bpm",
+        "business-production",
+        "business-support",
+        "cash-management",
+        "client-portal",
+        "fleet",
+        "gdpr",
+        "maintenance",
+        "marketing",
+        "mobile",
+        "project-dms",
+        "quality",
+        "supplier-management",
+        "talent",
+]
+
+gradle.ext.openSuiteModules = modules

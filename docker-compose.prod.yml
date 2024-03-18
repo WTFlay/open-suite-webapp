@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  tomcat:
+    image: tomcat:8.5-jdk8
+    ports:
+      - "${PORT}:8080"
+    depends_on:
+      - postgres
+    networks:
+      - frontend
+      - backend
+    volumes:
+      - ${TOMCAT_DIR}:/usr/local/tomcat/webapps
+      - ${AXELOR_DIR}:/var/axelor/data
+    environment:
+      JAVA_OPTS: -Xms4g -Xmx4g
+
+  postgres:
+    image: postgres:9
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - ${POSTGRES_DIR}:/var/lib/postgresql/data
+    networks:
+      - backend
+
+volumes:
+  backup_db:
+    driver: local
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge

@@ -1,0 +1,3 @@
+[submodule "modules/doc-designer"]
+	path = modules/doc-designer
+	url = git@github.com:WTFlay/doc-designer.git

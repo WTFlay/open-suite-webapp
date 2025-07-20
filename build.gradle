@@ -44,6 +44,8 @@ allprojects {
 tasks.withType(PublishToMavenRepository).configureEach { it.enabled = false }
 
 dependencies {
+  implementation "com.axelor.apps:axelor-base:8.4.2"
+
   gradle.appModules.each { dir ->
     implementation project(":modules:$dir.name")
   }
